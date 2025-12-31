@@ -2,9 +2,9 @@
 ARG BASE_IMAGE=ghcr.io/chaitin/monkeycode-runner/base:bookworm
 FROM ${BASE_IMAGE}
 
-LABEL org.opencontainers.image.title="DevRunner Frontend Node" \
-      org.opencontainers.image.source="https://github.com/chaitin/DevRunner" \
-      org.opencontainers.image.description="Node.js-focused frontend toolbox image for DevRunner stacks"
+LABEL org.opencontainers.image.title="DevRunner Frontend Node 24" \
+      org.opencontainers.image.source="https://github.com/gadzan/DevRunner" \
+      org.opencontainers.image.description="Node.js-focused frontend toolbox image for DevRunner stacks (Node 24)"
 
 ARG DEBIAN_FRONTEND=noninteractive
 ARG NODE_VERSION=24.12.0
