@@ -6,6 +6,7 @@ This repository contains Docker container images for Chaitin MonkeyCode develope
 
 - `docker/base/bookworm/` - Base Debian bookworm-slim image with essential development tools
 - `docker/frontend/node20/` - Node.js 20 frontend development image (extends base)
+- `docker/frontend/node24/` - Node.js 24 frontend development image (extends base)
 - `docker/golang/1.25-bookworm/` - Go 1.25 development image (extends base)
 - `scripts/build.sh` - Environment-driven build script for all images
 - `.github/workflows/ci.yaml` - CI/CD pipeline for automated builds and pushes
@@ -23,6 +24,9 @@ STACK=base VERSION=bookworm ./scripts/build.sh
 # Frontend Node.js image
 STACK=frontend VERSION=node20 ./scripts/build.sh
 
+# Frontend Node.js image
+STACK=frontend VERSION=node24 ./scripts/build.sh
+
 # Go development image
 STACK=golang VERSION=1.25-bookworm ./scripts/build.sh
 ```
@@ -39,6 +43,8 @@ docker run --rm -it ghcr.io/chaitin/monkeycode-runner/base:bookworm bash
 
 # Frontend image
 docker run --rm -it ghcr.io/chaitin/monkeycode-runner/frontend:node20 node --version
+
+docker run --rm -it ghcr.io/chaitin/monkeycode-runner/frontend:node24 node --version
 
 # Go image
 docker run --rm -it ghcr.io/chaitin/monkeycode-runner/golang:1.25-bookworm bash
@@ -63,7 +69,7 @@ The GitHub Actions workflow automatically:
 
 ### Directory Naming
 - Stack directories use lowercase: `base/`, `frontend/`, `golang/`
-- Version naming follows tool conventions: `bookworm`, `node20`, `1.25-bookworm`
+- Version naming follows tool conventions: `bookworm`, `node20`, `node24`, `1.25-bookworm`
 - Dockerfile paths: `docker/{stack}/{version}/Dockerfile`
 
 ### Shell Script Style
@@ -83,6 +89,7 @@ docker run --rm -it ghcr.io/chaitin/monkeycode-runner/base:bookworm bash -c "git
 
 # Test specific tools
 docker run --rm -it ghcr.io/chaitin/monkeycode-runner/frontend:node20 node --version
+docker run --rm -it ghcr.io/chaitin/monkeycode-runner/frontend:node24 node --version
 docker run --rm -it ghcr.io/chaitin/monkeycode-runner/golang:1.25-bookworm go version
 ```
 
@@ -137,4 +144,5 @@ Image naming: `{registry}/{stack}:{version}`
 Examples:
 - `ghcr.io/chaitin/monkeycode-runner/base:bookworm`
 - `ghcr.io/chaitin/monkeycode-runner/frontend:node20`
+- `ghcr.io/chaitin/monkeycode-runner/frontend:node24`
 - `ghcr.io/chaitin/monkeycode-runner/golang:1.25-bookworm`
